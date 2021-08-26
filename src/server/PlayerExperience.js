@@ -25,7 +25,8 @@ class PlayerExperience extends Experience {
       generationsPerCycle: 200,
       cycleInterval: 2000,
     });
-
+    //wp edit
+    // this.osc = this.require('osc');
     this.audioBufferManager = this.require('audio-buffer-manager');
 
     // model for loop parameters
@@ -64,12 +65,6 @@ class PlayerExperience extends Experience {
     this.receive(client, 'clear', this.onClearMessage(client));
     // server side new player publication
     this.messaging.emit('new-player', client);
-
-    this.sharedParams.update('numPlayers', this.clients.length);
-
-    if (this.botsEnabled)
-      this.updateBots();
-  }
 
   exit(client) {
     super.exit(client);
