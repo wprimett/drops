@@ -67,9 +67,9 @@ void setup()
 
 void loop()
 {
-  distance = ultrasonicSensor.getDistance();
-
-  delay(50);                                             //wait 50msec or more, until echo from previous measurement disappears
+//  distance = ultrasonicSensor.getDistance();
+//
+//  delay(50);                                             //wait 50msec or more, until echo from previous measurement disappears
 
 
   distance = ultrasonicSensor.getMedianFilterDistance(); //pass 3 measurements through median filter, better result on moving obstacles
@@ -103,8 +103,8 @@ void loop()
   itoa(d1, serialArrayElement2, 10); //Turn value into a character array
 
   strcat( serialArrayFull, serialArrayElement2 );
-  if (!HCSR04_OUT_OF_RANGE)
-    Serial1.write( serialArrayFull, sizeof(serialArrayFull) );
+//  if (!HCSR04_OUT_OF_RANGE)
+  Serial1.write( serialArrayFull, sizeof(serialArrayFull) );
 
   delay(delay_millis);                                            //serial refresh rate
 }

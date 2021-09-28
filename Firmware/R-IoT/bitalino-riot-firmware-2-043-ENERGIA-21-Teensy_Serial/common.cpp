@@ -234,8 +234,7 @@ char * ftoa(double f, char * buf, int precision)
 void SetLedColor(boolean red, boolean green, boolean blue)
 {
  digitalWrite(LED_RED, !red);
- digitalWrite(
-, !green);
+ digitalWrite(LED_GREEN, !green);
  digitalWrite(LED_BLUE, !blue);
 }
 

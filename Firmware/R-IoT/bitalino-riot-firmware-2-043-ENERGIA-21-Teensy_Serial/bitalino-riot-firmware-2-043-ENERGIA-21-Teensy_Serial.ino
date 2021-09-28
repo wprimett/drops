@@ -275,7 +275,7 @@ void setup() {
       ok = BITalino.start(1000, 0x3F, false);   // start acquisition of all channels at 1000 Hz
       sprintf(StringBuffer, "/%u/bitalino\0",ModuleID);
       PrepareOSC(&BitalinoData, StringBuffer, 'i', 11);    // Seq # + 4 digital + 6 analog
-      PrepareOSC(&SerialData, StringBuffer, 'i', 2);    // Seq # + 4 digital + 6 analog
+      PrepareOSC(&SerialData, StringBuffer, 'i', 5);    // Seq # + 4 digital + 6 analog
     }
     
   }
