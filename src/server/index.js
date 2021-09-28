@@ -66,7 +66,7 @@ const controllerExperience = new ControllerExperience('controller', { auth: true
 const playerExperience = new PlayerExperience('player', messaging);
 const planetExperience = new PlanetExperience('planet', messaging);
 
-//WP EDITS - RIOT
+//WP EDITS - RIOT - main branch
 const server = soundworks.server;
 server.start();
 
