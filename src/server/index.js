@@ -55,6 +55,7 @@ soundworks.server.setClientConfigDefinition((clientType, config, httpRequest) =>
     defaultType: config.defaultClient,
     assetsDomain: config.assetsDomain,
     geolocation: config.geolocation,
+    osc: config.osc,
     gaId: config.gaId,
   };
 });
@@ -65,4 +66,16 @@ const controllerExperience = new ControllerExperience('controller', { auth: true
 const playerExperience = new PlayerExperience('player', messaging);
 const planetExperience = new PlanetExperience('planet', messaging);
 
-soundworks.server.start();
+//WP EDITS - RIOT
+const server = soundworks.server;
+server.start();
+
+// bind osc controls
+const osc = server.require('osc');
+console.log('osc started')
+
+osc.receive('/project-list-request', (val) => {
+  console.log('osc rec')
+  console.log(val)
+  sharedParams.update('maxDrops', val);
+});
