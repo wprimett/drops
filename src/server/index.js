@@ -44,6 +44,11 @@ sharedParams.addEnum('enableBots', 'enable bots', ['on', 'off'], config.enableBo
 
 sharedParams.addTrigger('clear', 'clear');
 
+sharedParams.addNumber('distance_0', 'distance_0', 0.0, 4000, 1, 2);
+sharedParams.addNumber('distance_1', 'distance_1', 0.0, 4000, 1, 2);
+sharedParams.addNumber('distance_2', 'distance_2', 0.0, 4000, 1, 2);
+sharedParams.addNumber('distance_3', 'distance_3', 0.0, 4000, 1, 2);
+
 
 soundworks.server.setClientConfigDefinition((clientType, config, httpRequest) => {
   return {
@@ -77,5 +82,5 @@ console.log('osc started')
 osc.receive('/project-list-request', (val) => {
   console.log('osc rec')
   console.log(val)
-  sharedParams.update('maxDrops', val);
+  sharedParams.update('distance_0', val);
 });

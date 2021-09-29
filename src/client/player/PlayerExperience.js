@@ -129,9 +129,17 @@ class PlayerExperience extends soundworks.Experience {
       // must be initialized after all loops params
       sharedParams.addParamListener('autoPlay', (value) => this.setAutoPlay(value));
 
+      sharedParams.addParamListener('distance_0', (value) => this.printSensorData(0, value));
+      // sharedParams.addParamListener('distance_1', (value) => console.log(value);
+      // sharedParams.addParamListener('distance_2', (value) => console.log(value);
+      // sharedParams.addParamListener('distance_3', (value) => console.log(value);
+
       // setup listeners for messages from server
       this.receive('echo', (time, dropParams) => this.looper.createLoop(time, dropParams));
       this.receive('clear', (index) => this.looper.removeLoopByIndex(index));
+
+      // ADSE OSC input listener?
+      this.receive('riot-data', (data) => console.log(data));
     });
   }
 
@@ -229,6 +237,17 @@ class PlayerExperience extends soundworks.Experience {
     this.looper.removeLoopByIndex(client.index);
     // remove on other players
     this.send('clear');
+  }
+
+  // ------------------------------------------
+  // Sensor Data
+  // ------------------------------------------
+
+  printSensorData(dev_id, data){
+    console.log(data);
+    if (dev_id == 0){
+      console.log(data);
+    }
   }
 
   // ------------------------------------------

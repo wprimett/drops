@@ -22,6 +22,8 @@ const SERVICE_ID = 'service:color-picker';
 const template = `
 <style>
   .circle {
+    width: 50%;
+    height: 50%;
     vertical-align: middle;
     border-radius: 50%;
     font-size: 50px;

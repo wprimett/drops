@@ -24,6 +24,12 @@ class ControllerExperience extends Experience {
     this.setGuiOptions('mutePlanets', { type: 'buttons' });
     this.setGuiOptions('volumePlanets', { type: 'slider', size: 'large' });
     this.setGuiOptions('enableBots', { type: 'buttons' });
+
+    this.setGuiOptions('distance_0', { type: 'slider', size: 'large' });
+    this.setGuiOptions('distance_1', { type: 'slider', size: 'large' });
+    this.setGuiOptions('distance_2', { type: 'slider', size: 'large' });
+    this.setGuiOptions('distance_3', { type: 'slider', size: 'large' });
+
     // start client
 
     if (options.auth)
