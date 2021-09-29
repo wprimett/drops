@@ -4,16 +4,41 @@ import please from 'pleasejs';
 
 const SERVICE_ID = 'service:color-picker';
 
+// const template = `
+//   <div class="section-top flex-middle">
+//     <p class="small">Choose your color</p>
+//   </div>
+//   <div class="section-center flex-center">
+//     <div class="color-wrapper">
+//       <% for (var i = 0; i < 4; i++) { %>
+//       <div class="circle color"></div>
+//       <% } %>
+//       <div class="circle color-change"></div>
+//     </div>
+//   </div>
+//   <div class="section-bottom"></div>
+// `;
+
 const template = `
+<style>
+  .circle {
+    vertical-align: middle;
+    border-radius: 50%;
+    font-size: 50px;
+    color: #fff;
+    text-align: center;
+    padding-top: 50%;
+  }
+</style>
+
   <div class="section-top flex-middle">
-    <p class="small">Choose your color</p>
+    <p class="big">Choose a color</p>
   </div>
   <div class="section-center flex-center">
     <div class="color-wrapper">
-      <% for (var i = 0; i < 11; i++) { %>
-      <div class="circle color"></div>
+      <% for (var i = 0; i < 4; i++) { %>
+      <div class="circle color"> <%= i %> </div>
       <% } %>
-      <div class="circle color-change"></div>
     </div>
   </div>
   <div class="section-bottom"></div>
@@ -46,9 +71,9 @@ class ColorPickerView extends SegmentedView {
 
     let size;
 
-    if (orientation === 'portrait') {
-      const nbrX = 3;
-      const nbrY = 4;
+    if (orientation === 'portrait' || true) {
+      const nbrX = 2;
+      const nbrY = 2;
 
       const bcr = this.$colorWrapper.getBoundingClientRect();
       const width = bcr.width;
@@ -65,19 +90,26 @@ class ColorPickerView extends SegmentedView {
 
   _updatePalette() {
     const $circles = this.$circles;
-    const colors = please.make_color({
-      colors_returned: 11,
-      format: 'rgb-string',
-      saturation: .75,
-      value: .75,
-    });
+    // const colors = please.make_color({
+    //   colors_returned: 4, //ADSE limit colors
+    //   format: 'rgb-string',
+    //   saturation: .75,
+    //   value: .75,
+    // });
 
-    for (let i = 0; i < 11; i++) {
+    const colors = [
+      "rgb(47,191,73)",
+      "rgb(147,33,7)",
+      "rgb(247,191,73)",
+      "rgb(7,7,173)"
+    ];
+    for (let i = 0; i < 4; i++) {
       const $circle = $circles[i];
       const color = colors[i];
 
       $circle.style.backgroundColor = color;
       $circle.setAttribute('data-rgb', color);
+      $circle.setAttribute('id', i);
     }
   }
 }
@@ -92,7 +124,7 @@ class ColorPicker extends Service {
   start() {
     super.start();
 
-    this.options.viewPriority = 7;
+    this.options.viewPriority = 4;
 
     this.view = new ColorPickerView(template, {}, {
       'touchstart .color': this._onSelectColor,
@@ -120,6 +152,8 @@ class ColorPicker extends Service {
     e.stopPropagation();
 
     client.color = e.target.getAttribute('data-rgb');
+    client.colorID = e.target.getAttribute('id');
+    console.log(client.colorID);
     this.ready();
   }
 }

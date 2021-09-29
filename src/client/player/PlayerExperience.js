@@ -210,6 +210,9 @@ class PlayerExperience extends soundworks.Experience {
       const syncTime = this.scheduler.syncTime;
       // sould use `metro.currentPosition` too
       const dropParams = this.mapper.getDropParams(x, y, client);
+      console.log(dropParams.index) // includes id
+      console.log(dropParams.color) // includes color
+      console.log(dropParams.colorID) // includes color ID
 
       this.looper.createLoop(syncTime, dropParams, true);
       this.send('drop', syncTime, dropParams);

@@ -66,6 +66,9 @@ class PlayerExperience extends Experience {
     // server side new player publication
     this.messaging.emit('new-player', client);
 
+    // console.log('new client info')
+    // console.log(client);
+  }
   exit(client) {
     super.exit(client);
 

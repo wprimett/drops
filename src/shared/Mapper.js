@@ -65,6 +65,7 @@ class Mapper {
       y: y,
       midiKey: midiKey,
       color: client.color,
+      colorID: client.colorID,
       gain: 1,
     };
   }
