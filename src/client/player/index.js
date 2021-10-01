@@ -23,4 +23,15 @@ window.addEventListener('load', () => {
 
   const experience = new PlayerExperience(config.assetsDomain, config.geolocation);
   soundworks.client.start();
+
+  // const osc = soundworks.server.require('node-osc');
+
+  // console.log('osc started client')
+  //
+  // osc.receive('/project-list-request', (val) => {
+  //   console.log('osc rec')
+  //   console.log(val)
+  //   sharedParams.update('distance_0', val);
+  // });
+
 });

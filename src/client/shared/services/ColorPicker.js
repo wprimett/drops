@@ -92,7 +92,7 @@ class ColorPickerView extends SegmentedView {
 
   _updatePalette() {
     const $circles = this.$circles;
-    // const colors = please.make_color({
+      // const colors = please.make_color({
     //   colors_returned: 4, //ADSE limit colors
     //   format: 'rgb-string',
     //   saturation: .75,

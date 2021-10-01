@@ -240,7 +240,7 @@ class PlayerExperience extends soundworks.Experience {
   }
 
   // ------------------------------------------
-  // Sensor Data
+  // Sensor Data Riot
   // ------------------------------------------
 
   printSensorData(dev_id, data){
